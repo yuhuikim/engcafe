@@ -6,8 +6,8 @@
 <body>
 
 <script type="text/javascript">
-	//location.href="board/list";
-	location.href="board/insertBigCategory";
+	location.href="board/list";
+	//location.href="board/insertBigCategory";
 
 </script>
 
