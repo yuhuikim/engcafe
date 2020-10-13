@@ -4,7 +4,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 	<typeAliases>
-		<typeAlias alias="board" type="com.ch.ch10.model.Board"/>
+		<typeAlias alias="board" type="com.pr.project.model.Board"/>
 	</typeAliases>
 	<mappers>
 		<mapper	resource="board.xml" />
