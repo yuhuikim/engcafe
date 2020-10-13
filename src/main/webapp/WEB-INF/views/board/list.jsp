@@ -31,6 +31,7 @@
 <a href="/board/insertForm" class="btn btn-info">게시글 입력</a>
 </div>
 
+<h1>유정 수정~</h1>
 
 </body>
 </html>
