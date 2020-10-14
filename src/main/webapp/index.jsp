@@ -6,9 +6,16 @@
 <body>
 
 <script type="text/javascript">
-	location.href="board/list";
-	//location.href="board/insertBigCategory";
-
+	//location.href="board/list";
+	//location.href="tab/mainhome.html";
+	//location.href="tab/tab2.html";
+	
+	//location.href="tab/cafeintroex.html";
+	//location.href="board/tabtest3";
+	
+	//location.href="home.html"
+	location.href="home_yj.html"
+	
 </script>
 
 </body>
