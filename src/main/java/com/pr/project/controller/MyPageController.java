@@ -25,4 +25,12 @@ public class MyPageController {
 		
 		return "home_yj";
 	}
+	
+	@RequestMapping("myPageTab/memberLevelInfo")
+	public String memberLevelInfo() {
+		
+		return "myPageTab/memberLevelInfo";
+	}
+	
+	
 }

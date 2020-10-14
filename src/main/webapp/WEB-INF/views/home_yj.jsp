@@ -40,6 +40,8 @@
 			$('#cinfo_span').attr('style','display:active;padding-top:7px;padding-bottom:7px;height:210px');
 		});
 		
+		
+		
 	});
 
 </script>
@@ -161,6 +163,16 @@
 					<input type="submit" value="검색" style="float:right;width:40px;height:25px;color:white;background-color:#24c932;border-radius:1px;border:1px solid #24c932;font-size:12px;margin-bottom:4px;"/>
 				</div>
 			</form>
+			
+			<!-- 게시판 category -->
+			
+			<section id="categorybar">
+			<div style="height:40px;padding-top:3px;border-top:2px solid black;border-bottom:1px solid #ededed;">
+			
+			<u:categoriestag />
+			
+			</div>
+			</section>
 		</div>
 	</section>
 	
@@ -168,25 +180,27 @@
 		<div style="margin-left:200px;width:900px;padding-top:20px;padding-bottom:20px;">
 			<div class="container" style="width:860px;height:1000px;padding-top:20px;padding-bottom:20px;border:4px solid #ededed;">
 				
-				<div class="container" style="padding-top:60px;padding-bottom:60px;background-color:#ededed;width:700;height:960;">
+				<div id="banners" class="container" style="display:active;padding-top:60px;padding-bottom:60px;background-color:#ededed;width:700;height:960;">
 					<div class="row">				
 						<a href=""><img style="width:195px;height:220px;" src="${path}/resources/images/1.jpg" alt=""/></a>
 						<a href=""><img style="width:195px;height:220px;margin-left:10px;margin-right:10px" src="${path}/resources/images/2.jpg" alt=""/></a>
 						<a href=""><img style="width:195px;height:220px;" src="${path}/resources/images/3.jpg" alt=""/></a>
-					</div>
-					<div class="row" style="margin-top:10px;margin-bottom:10px">				
+					<!-- </div>
+					<div class="row" style="margin-top:10px;margin-bottom:10px"> -->	
+					<br />	<br /><br />		
 						<a href=""><img style="width:195px;height:220px;" src="${path}/resources/images/4.jpg" alt=""/></a>
 						<a href=""><img style="width:195px;height:220px;margin-left:20px;margin-right:20px" src="${path}/resources/images/5.jpg" alt=""/></a>	
 						<a href=""><img style="width:195px;height:220px;" src="${path}/resources/images/6.jpg" alt=""/></a>
-					</div>
-					<div class="row">				
+					<!-- </div>
+					<div class="row">	 -->	
+					<br />	<br /><br />		
 						<a href=""><img style="width:195px;height:220px;" src="${path}/resources/images/7.jpg" alt=""/></a>
 						<a href=""><img style="width:195px;height:220px;margin-left:20px;margin-right:20px" src="${path}/resources/images/8.jpg" alt=""/></a>
 						<a href=""><img style="width:195px;height:220px;" src="${path}/resources/images/9.jpg" alt=""/></a>
 					</div>
 				</div>
-					
-			
+				
+				
 			</div>	
 		</div>
 	</section>

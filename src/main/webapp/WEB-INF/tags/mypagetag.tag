@@ -2,6 +2,31 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
+<!-- popup -->
+<script type="text/javascript">
+function popupOpen(){
+	var popUrl="myPageTab/memberLevelInfo.html";
+	
+	var popupWidth = 740;
+	var popupHeight = 575;
+	
+	var popupX = Math.ceil(window.screen.width - popupWidth) / 2 ;
+	// 만들 팝업창 좌우 크기의 1/2 만큼 보정값으로 빼주었음
+
+	var popupY= Math.ceil(window.screen.height - popupHeight) /2 ;
+	// 만들 팝업창 상하 크기의 1/2 만큼 보정값으로 빼주었음
+
+	
+	window.open(popUrl, '', 'status=no, height=575, width=740, left='+ popupX + ', top='+ popupY + ', screenX='+ popupX + ', screenY= '+ popupY);
+	
+	//var popOption = "width=740, height=575, resizable=no, scrollbars=no, status=no;";    //팝업창 옵션(optoin)
+
+	//window.open(popUrl,"",popOption);
+
+}
+</script>
+
+
 <div style="height:187px;">
 <!-- myacti_span -->
 
@@ -19,7 +44,7 @@
 <table width="180px">
 <tr style="font-size:13px">
 	<td style="padding-top:10px;padding-bottom:10px;color:#7d7d7d;"> <img alt="" src="${path }/resources/images/level1.png">  새싹 </td>
-	<td align="right" style="font-size:11px;"> <a href="" style="color:black"> 멤버등급 안내</a> </td>
+	<td align="right" style="font-size:11px;"> <a href="javascript:popupOpen();" style="color:black"> 멤버등급 안내</a> </td>
 </tr>
 
 <tr >
