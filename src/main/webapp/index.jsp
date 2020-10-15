@@ -15,6 +15,7 @@
 	
 	//location.href="home.html"
 	location.href="home_yj.html"
+	//location.href="replyList.html?r_b_num=100";
 	
 </script>
 
