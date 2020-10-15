@@ -6,9 +6,11 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 	<typeAliases>
 		<typeAlias alias="board" type="com.pr.project.model.Board"/>
 		<typeAlias alias="mypage" type="com.pr.project.model.User"/>
+		<typeAlias alias="reply" type="com.pr.project.model.Reply"/>
 	</typeAliases>
 	<mappers>
 		<mapper	resource="board.xml" />
 		<mapper	resource="mypage.xml" />
+		<mapper	resource="reply.xml" />
 	</mappers>
 </configuration>
