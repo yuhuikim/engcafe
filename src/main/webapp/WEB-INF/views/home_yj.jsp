@@ -60,7 +60,7 @@
 				<a href="" class="btn btn-xs btn-default">로그인</a>
 			</p>
 		</div>
-		<img src="${path }/resources/images/head.jpg" alt="" />
+		<img src="${path }/resources/images/yanado.jpg" alt="" />
 	</div>
 </section>
 <div class="container" align="center" style="padding-top:10px;padding-left:40px;padding-right:40px;">
