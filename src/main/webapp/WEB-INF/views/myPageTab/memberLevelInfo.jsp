@@ -15,7 +15,7 @@
 	href="${path}/resources2/cssmanage/cafe_admin_pop-1577769455000-41922.css"
 	type="text/css">
 
-<title>Insert title here</title>
+<title>멤버등급 안내</title>
 </head>
 <body>
 	<div id="pop_wrap" class="pop_staff_role" style="width: 700px">

@@ -32,5 +32,15 @@ public class MyPageController {
 		return "myPageTab/memberLevelInfo";
 	}
 	
+	@RequestMapping("myPageTab/sendmessagePopup")
+	public String sendmessagePopup() {
+		
+		return "myPageTab/sendmessagePopup";
+	}
 	
+	@RequestMapping("myPageTab/userInfoUpdateForm")
+	public String userInfoUpdateForm() {
+		
+		return "myPageTab/userInfoUpdateForm";
+	}
 }
