@@ -113,8 +113,9 @@ public class UserController {
 			result = -1; // 없거나 탈퇴한 회원이다.
 		else if (user.getUser_pwd().equals(ur.getUser_pwd())) {
 			result = 1; // 로그인 성공
-			loginip.setI_id(user.getUser_id()); 
+			loginip.setI_id(user.getUser_id());
 			loginip.setI_ip(request.getLocalAddr()); // ip setting
+			ls.insert(loginip);
 			session.setAttribute("id", user.getUser_id()); // 로그인 상태 유지
 		}
 		model.addAttribute("result", result);

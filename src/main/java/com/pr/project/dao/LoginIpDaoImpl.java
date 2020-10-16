@@ -4,7 +4,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.pr.project.model.User;
+import com.pr.project.model.LoginIp;
 
 @Repository
 public class LoginIpDaoImpl implements LoginIpDao {
@@ -13,7 +13,12 @@ public class LoginIpDaoImpl implements LoginIpDao {
 	private SqlSessionTemplate sst;
 
 	@Override
-	public User select(String i_id) {
+	public LoginIp select(String i_id) {
 		return sst.selectOne("loginip.select", i_id);
+	}
+
+	@Override
+	public int insert(LoginIp loginip) {
+		return sst.insert("loginip.insert",loginip);
 	}
 }

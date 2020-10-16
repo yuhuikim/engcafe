@@ -1,7 +1,9 @@
 package com.pr.project.service;
 
-import com.pr.project.model.User;
+import com.pr.project.model.LoginIp;
 
 public interface LoginIpService {
-	User select(String i_id);
+	LoginIp select(String i_id);
+	int insert(LoginIp loginip);
+
 }

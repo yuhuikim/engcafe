@@ -1,9 +1,11 @@
 package com.pr.project.dao;
 
-import com.pr.project.model.User;
+import com.pr.project.model.LoginIp;
 
 public interface LoginIpDao {
 
-	User select(String i_id);
+	LoginIp select(String i_id);
+
+	int insert(LoginIp loginip);
 
 }
