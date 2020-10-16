@@ -9,12 +9,6 @@
 
 
 
-
-
-
-
-
-
 <!-- <select id="list" parameterType="map" resultType="board">
 	select * from
     (select a.*, rownum rn from 

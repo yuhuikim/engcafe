@@ -15,11 +15,11 @@ public class BoardController {
 	@Autowired
 	private BoardService bs;
 	
-	@RequestMapping("/board/list")
+	@RequestMapping("board/list")
 	public String list(Model model) {
 		List<Board> list = bs.list();
 		model.addAttribute("list", list);
-		return "/board/list";
+		return "board/list";
 	}
 
 }

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="loginipns">
+	<resultMap type="loginip" id="loginipResult">
+		<result property="i_num" column="i_num" />
+		<result property="i_id" column="i_id" />
+		<result property="i_ip" column="i_ip" />
+		<result property="i_logdate" column="i_logdate" />
+	</resultMap>
+</mapper>

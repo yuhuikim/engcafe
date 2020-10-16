@@ -5,8 +5,12 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 <configuration>
 	<typeAliases>
 		<typeAlias alias="board" type="com.pr.project.model.Board"/>
+		<typeAlias alias="user" type="com.pr.project.model.User"/>
+		<typeAlias alias="loginip" type="com.pr.project.model.LoginIp"/>
 	</typeAliases>
 	<mappers>
 		<mapper	resource="board.xml" />
+		<mapper	resource="user.xml" />
+		<mapper	resource="loginip.xml" />
 	</mappers>
 </configuration>
