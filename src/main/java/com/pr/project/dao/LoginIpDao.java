@@ -4,8 +4,8 @@ import com.pr.project.model.LoginIp;
 
 public interface LoginIpDao {
 
-	LoginIp select(String i_id);
+	LoginIp select_ip(String i_id);
 
-	int insert(LoginIp loginip);
+	int insert_ip(LoginIp loginip);
 
 }

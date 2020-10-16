@@ -13,12 +13,15 @@ public class LoginIpDaoImpl implements LoginIpDao {
 	private SqlSessionTemplate sst;
 
 	@Override
-	public LoginIp select(String i_id) {
-		return sst.selectOne("loginip.select", i_id);
+	public LoginIp select_ip(String i_id) {
+		return sst.selectOne("loginip.select_ip", i_id);
 	}
 
 	@Override
-	public int insert(LoginIp loginip) {
-		return sst.insert("loginip.insert",loginip);
+	public int insert_ip(LoginIp loginip) {
+		System.out.println("dao에서  id 받음"+loginip.getI_id());
+		System.out.println("dao에서 ip 받음"+ loginip.getI_ip());
+		return sst.insert("loginipns.insert_ip",loginip);
+		
 	}
 }
