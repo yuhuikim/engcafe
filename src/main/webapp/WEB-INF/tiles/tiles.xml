@@ -1,0 +1,27 @@
+<!DOCTYPE tiles-definitions PUBLIC
+"-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN"
+"http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+<tiles-definitions>
+	<definition name="tilesbase"
+		template="/WEB-INF/views/home_yj.jsp">
+		<put-attribute name="title" value="" />
+		<put-attribute name="header"
+			value="/WEB-INF/views/main/mainHeader.jsp" />
+		<put-attribute name="menu"
+			value="/WEB-INF/views/main/menu.jsp" />
+		<put-attribute name="body" 
+			value="" />
+		<put-attribute name="footer"
+			value="/WEB-INF/views/main/footer.jsp" />
+	</definition>
+	<definition name="main" extends="tilesbase">
+		<put-attribute name="title" value="첫 화면 입니다" />
+		<put-attribute name="body"
+			value="/WEB-INF/views/main/mainBody.jsp" />
+	</definition>
+	<definition name="/reply/replyView" extends="tilesbase">
+		<put-attribute name="title" value="시험용ㅎㅎ 댓글페이지 입뉘다" />
+		<put-attribute name="body"
+			value="/WEB-INF/views/reply/replyView.jsp" />
+	</definition>
+</tiles-definitions>
