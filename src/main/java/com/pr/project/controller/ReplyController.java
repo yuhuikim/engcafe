@@ -7,9 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import com.pr.project.model.Reply;
 import com.pr.project.service.ReplyService;
@@ -19,13 +17,13 @@ public class ReplyController {
 	@Autowired
 	private ReplyService rs;
 	
-	@RequestMapping("replyForm")
+	@RequestMapping("replyForm.html")
 	public String replyForm(int r_ref, Model model) {
 		model.addAttribute("r_ref", r_ref);
 		return "/reply/replyForm";
 	}
 	
-	@RequestMapping("insertReply")
+	@RequestMapping("insertReply.html")
 	public String insert(Reply reply, Model model, HttpServletRequest request) {
 		reply.setR_ip(request.getLocalAddr());	
 		int rnum = rs.maxNum()+1;
@@ -43,10 +41,10 @@ public class ReplyController {
 		}
 		rs.insert(reply);
 		model.addAttribute("r_b_num", reply.getR_b_num());
-		return "redirect:replyList?r_b_num="+reply.getR_b_num();
+		return "redirect:replyList.html?r_b_num="+reply.getR_b_num();
 	}
 	
-	@RequestMapping("updateReply")
+	@RequestMapping("udpateReply.html")
 	public String update(String r_content, int r_b_num, int r_num, Model model) {
 		System.out.println("r_b_num="+r_b_num);
 		System.out.println("r_num="+r_num);
@@ -54,13 +52,13 @@ public class ReplyController {
 		reply.setR_num(r_num);
 		reply.setR_content(r_content);
 		rs.update(reply);
-		return "redirect:replyList?r_b_num="+r_b_num;
+		return "redirect:replyList.html?r_b_num="+r_b_num;
 	}
 	
-	@RequestMapping("deleteReply")
+	@RequestMapping("deleteReply.html")
 	public String delete(int r_b_num, int r_num, Model model) {
 		rs.delete(r_num);
-		return "redirect:replyList?r_b_num="+r_b_num;
+		return "redirect:replyList.html?r_b_num="+r_b_num;
 	}
 
 	@RequestMapping("replyList")
@@ -69,4 +67,5 @@ public class ReplyController {
 		model.addAttribute("replyList", replyList);
 		return "/reply/replyView";
 	}
+
 }

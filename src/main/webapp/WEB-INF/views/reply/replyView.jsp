@@ -8,40 +8,44 @@
 <title>Insert title here</title>
 <script type="text/javascript">
 	$(function(){
-		$('#replyFormDisp').load('replyForm?r_ref=0');
+		$('#replyFormDisp').load('replyForm.html?r_ref=0');
 	});
-	function rDelete(r_b_num, r_num){
-		var sendData = 'r_b_num='+r_b_num+'&r_num='+r_num;
-		$.post('deleteReply', sendData, function(data){
-			alert("댓글 삭제 성공");
- 			$('#repListDisp').html(data);
-		});
-	}
+ 	function rDelete(r_b_num, r_num){
+		  if(confirm("정말 삭제하시겠습니까 ?") == true){
+		        alert("삭제되었습니다");
+		        $(location).attr('href', 'deleteReply.html?r_b_num='+r_b_num+'&r_num='+r_num); 
+		    }
+		    else{
+		        return;
+		    }
+	} 
 	function rUpdate(r_b_num, r_num, r_level){
 		// 데이터를 읽을 때 input/textarea는 form형식 -> val()
 		// td/span 같이 form 형식이 아닐 때 -> text()
 		var txt = $('#rCont_'+r_num).text();
-		var rows = 3+0.2*r_level;
-		var cols = 120-r_level*7;
+		var rows = 3 /* 3+0.5*r_level; */
+		var cols = 90 /* 100-r_level*8; */
 		// 읽은 글을 편집 할 수 있도록 textarea에 넣어야 함
-		$('#rCont_'+r_num).html('<textarea rows="'+rows+'" cols="'+cols+'" id="rCont2_'+r_num+'" style="outline:none;border:1px solid #cdcdcd">'+
-				txt+'</textarea>');
-		$('#tab_pop_'+r_num).html(
-			'<div style="width:80px;height:100px;padding-top:7px;padding-bottom:7px;border:1px solid #cdcdcd;">'+
-			'<table class="table table-hover" style="text-align:center;font-size:14px;color:#8c8c8c;">'+
-			'<tr><td style="padding:10px;cursor:pointer;" onclick="up('+r_b_num+','+r_num+')">확인</td></tr>'+
-			'<tr><td style="padding:10px;border-bottom:1px solid #cdcdcd;cursor:pointer" onclick="lst('+r_b_num+')">취소</td></tr></table></div>');
+		$('#replRow_'+r_num).html('<td id="replCol_'+r_num+'" colspan="12"></td>');	
+		$('#replCol_'+r_num).html('<div class="container" align="left" style="width:780px">'+
+			'<div class="container" style="float:left;width:700px;border:2px solid #e5e5e5;border-radius:10px;padding-top:15px;padding-bottom:15px;">'+
+			'<table><tr><td><p style="float:left;font-size:13px;font-weight:bold;" onclick="">tempnick</p></td></tr><tr><td>'+
+			'<textarea id="rCont2_'+r_num+'" rows="'+rows+'" cols="'+cols+'" style="float:left;border:none;outline:none;width:640px;font-size:13px"'+ 
+			'name="r_content" cols="90" rows="3">'+txt+'</textarea></td></tr><tr><td><p><img src="${path }/resources/images/i8.jpg"'+
+			'alt="" style="float:left;cursor:pointer" onclick=""/><img src="${path }/resources/images/i9.jpg" alt="" style="float:left;cursor:pointer"'+
+			'onclick=""/><button type="button" style="float:right;border-radius:6px;border:none;outline:none;margin-right:10px;font-size:13px;'+
+			'background-color:#e0f8eb;color:#009f47;font-weight:bold;" onclick="up('+r_b_num+','+r_num+')">등록</button>'+
+			'<button type="button" style="float:right;border-radius:6px;border:none;outline:none;font-size:13px;background-color:transparent;'+
+			'color:#a3a3a3;font-weight:bold;" onclick="lst('+r_b_num+')">취소</button></p></td></tr></table></div></div></div>'
+		);
 	}
-	function up(r_b_num, r_num){
-		var sendData = 'r_content='+$('#rCont2_'+r_num).val()+'&r_b_num='+r_b_num+'&r_num='+r_num;
-		$.post('updateReply', sendData, function(data){
-			alert("수정 성공");
- 			$('#repListDisp').html(data);
-		});
+ 	function up(r_b_num, r_num){
+ 		alert($('#rCont2_'+r_num).val());
+        $(location).attr('href', 'udpateReply.html?r_content='+$('#rCont2_'+r_num).val()+'&r_b_num='+r_b_num+'&r_num='+r_num); 
 	}
 	function lst(r_b_num){
-		$('#repListDisp').load('replyList?r_b_num='+r_b_num);
-	}
+		$(location).attr('href', 'replyList.html?r_b_num='+r_b_num);
+	} 
 	function modKey(r_num){
 		$('#tab_pop_'+r_num).appendTo('#modIcon_'+r_num);
 		$('#tab_pop_'+r_num).attr('style','display:active;position:absolute;');
@@ -51,7 +55,7 @@
 	}
 	function replKey(r_num,r_level){
 		$('#replDiv_'+r_num).attr('style','display:active;');
-  		$('#replInDiv_'+r_num).load('replyForm?r_ref='+r_num);		
+  		$('#replInDiv_'+r_num).load('replyForm.html?r_ref='+r_num);		
 	}
 	function iconDown(r_num){
 		$('#replIcon_'+r_num).attr('class','glyphicon glyphicon-circle-arrow-up');
@@ -67,29 +71,30 @@
 
 </head>
 <body>
-<div id="replyWhole" class="container" align="center">
+<div id="replyWhole" class="container" align="center" style="margin-left:200px;width:900px;padding-top:30px;padding-bottom:20px;">
 
-	<div id="repListDisp" class="container" align="center">
-		<c:if test="${not empty replyList }">
+	<div id="repListDisp" class="container" align="left">
 			<p align="left" style="margin-top:24px;margin-left:10px;font-size:20px;font-weight:bolder">댓글 
 				<a href="" style="margin-left:10px;font-size:15px;color:#333333;font-weight:bolder">등록순</a> 
 				<a href="" style="margin-left:10px;font-size:14px;color:#bdbdbd;font-weight:bolder">최신순</a>
 			</p>
-			<table class="table" style="width:100%">
+			<table class="table" style="float:left;width:850px;line-height:25px">
+			<c:if test="${not empty replyList }">
 				<c:forEach var="rl" items="${replyList }">
 					<c:if test="${rl.r_del=='y'}">
-						<tr><td colspan="12">삭제된 댓글입니다.</td></tr>
+						<!-- <tr><td colspan="12">삭제된 댓글입니다.</td></tr> -->
 					</c:if>
 					<c:if test="${rl.r_del!='y'}">
-						<tr style="border-top:1px solid #cdcdcd">
+						<tr id="replRow_${rl.r_num}" style="border-top:1px solid #cdcdcd;">
 							<c:if test="${rl.r_level>0 }"><td colspan="${rl.r_level}"></td></c:if>
-							<td style="width:60px;padding-top:30px;padding-bottom:20px;">
-								<i class="glyphicon glyphicon-user" style="float:left;color:#dfe1e5;font-size:50px"></i>
+							<td style="width:60px;padding-top:20px;">
+								<span class="glyphicon glyphicon-user" style="float:left;color:#dfe1e5;font-size:40px"></span>
 							</td>
-							<td colspan="11-${rl.r_level}" style="padding:20px 20px">
-								<p style="font-size:16px;font-weight:bold;cursor:pointer;">${rl.r_nick }
-								
-									<div id="tab_pop_${rl.r_num}" style="display:none">	
+							<td colspan="11-${rl.r_level}" style="padding-top:20px;">
+								<p style="font-size:12px;font-weight:bold;cursor:pointer;">${rl.r_nick }
+									<span id="modIcon_${rl.r_num}" style="float:right;color:#bdbdbd;cursor:pointer;margin:5px;" class="glyphicon glyphicon-cog" onmouseover="modKey(${rl.r_num})" onmouseout="stopModKey(${rl.r_num})"></span>
+					
+								 	<div id="tab_pop_${rl.r_num}" style="display:none">	
 											<c:if test="${rl.r_id==rl.r_id }">	
 												<div style="width:80px;height:100px;padding-top:7px;padding-bottom:7px;border:1px solid #cdcdcd;">
 													<table class="table table-hover" style="text-align:center;font-size:14px;color:#8c8c8c;">
@@ -111,12 +116,11 @@
 													</table>
 												</div>
 											</c:if>
-										</div>
+									</div>
 								
-									<i id="modIcon_${rl.r_num}" style="float:right;color:#bdbdbd;cursor:pointer" class="glyphicon glyphicon-cog" onmouseover="modKey(${rl.r_num})" onmouseout="stopModKey(${rl.r_num})"></i>
 								</p>
-								<p id="rCont_${rl.r_num }" style="font-size:16px">${rl.r_content }</p>
-								<p style="float:left;font-size:13px;color:#979797 ">${rl.r_update }&nbsp&nbsp
+								<p id="rCont_${rl.r_num }" style="font-size:14px">${rl.r_content }</p>
+								<p style="float:left;font-size:11px;color:#979797 ">${rl.r_update }&nbsp&nbsp
 								<c:if test="${rl.r_level<10}">
 									<p id="rKey_${rl.r_num }" style="float:left;font-size:13px;color:#979797;cursor:pointer" onclick="replKey(${rl.r_num},${rl.r_level})">답글쓰기</p>
 								</c:if>
@@ -127,21 +131,26 @@
 								</p>
 							</td>
 						</tr>
-						<tr id="replDiv_${rl.r_num}" style="display:none">
-	 						<td style="height:220px;padding-top:25px;">
+						<tr id="replDiv_${rl.r_num}" style="display:none;">
+	 						<td style="float:left;width:50px;height:140px;padding-top:25px;">
 								<span id="replIcon_${rl.r_num}" onmouseover="iconDown(${rl.r_num})" onclick="iconUp(${rl.r_num})" onmouseout="stopIconDown(${rl.r_num})"
 								 class="glyphicon glyphicon-circle-arrow-down" style="cursor:pointer;float:right;font-size:30px;color:#d6d6d6"></span>
 							</td> 
-							<td colspan="11" id="replInDiv_${rl.r_num}" align="left" style="height:220px;padding-top:20px;padding-bottom:20px">
+							<td colspan="11" id="replInDiv_${rl.r_num}" align="left" style="height:140px;padding-top:10px;padding-bottom:10px">
 							</td>
 						</tr>
+						
 					</c:if>
 				</c:forEach>
-			</table>
-		</c:if>
-		<hr style="margin-bottom:50px;border-top:3px double #d6d6d6;"/>
-		<div id="replyFormDisp"></div>
+			</c:if>	
+			<tr><td colspan="12" style="padding-top:20px;">
+			
+			<div id="replyFormDisp" style="width:850px"></div>
+			
+			</td></tr>
+		</table>
 	</div>
+				
 </div>
 </body>
 </html>
