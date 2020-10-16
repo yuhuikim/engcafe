@@ -14,7 +14,7 @@ public class LoginIpDaoImpl implements LoginIpDao {
 
 	@Override
 	public LoginIp select_ip(String i_id) {
-		return sst.selectOne("loginip.select_ip", i_id);
+		return sst.selectOne("loginipns.select_ip", i_id);
 	}
 
 	@Override
@@ -22,6 +22,5 @@ public class LoginIpDaoImpl implements LoginIpDao {
 		System.out.println("dao에서  id 받음"+loginip.getI_id());
 		System.out.println("dao에서 ip 받음"+ loginip.getI_ip());
 		return sst.insert("loginipns.insert_ip",loginip);
-		
 	}
 }

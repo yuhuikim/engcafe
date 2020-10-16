@@ -11,8 +11,9 @@
 	<script type="text/javascript">
 		//location.href = "board/list.html";
 		//location.href="board/insertBigCategory";
-		location.href="user/loginForm.html";
-		//location.href = "user/joinForm.html";
+		//e.preventDefault();
+		//location.href="user/loginForm.html";
+		location.href = "user/joinForm.html";
 	</script>
 
 </body>
