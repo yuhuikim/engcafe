@@ -61,7 +61,7 @@ public class UserController {
 
 		User ui = us.select(user.getUser_id());
 		User un = us.select1(user.getUser_nickname());
-
+//ad
 		if (ui == null && un == null) { // 둘 다 중복 아닌 경우
 			user.setUser_ip(request.getLocalAddr()); // ip setting
 			result = us.insert(user);
@@ -106,10 +106,11 @@ public class UserController {
 	}
 
 	@RequestMapping("user/login")
-	public String login(String test,User user, LoginIp loginip, Model model, HttpServletRequest request, HttpSession session) {
+	public String login(String test, User user, LoginIp loginip, Model model, HttpServletRequest request,
+			HttpSession session) {
 		int result = 0;
 		User ur = us.select(user.getUser_id());
-		
+
 		if (ur == null || ur.getUser_del().equals("y"))
 			result = -1; // 없거나 탈퇴한 회원이다.
 		else if (user.getUser_pwd().equals(ur.getUser_pwd())) {
@@ -117,22 +118,21 @@ public class UserController {
 			loginip.setI_id(user.getUser_id());
 			loginip.setI_ip(request.getLocalAddr()); // ip setting
 			System.out.println("ip 는 이거얌" + request.getLocalAddr());
-			test=request.getLocalAddr();
+			test = request.getLocalAddr();
 			System.out.println(loginip.getI_ip());
-			model.addAttribute("test",test);
+			model.addAttribute("test", test);
 			ls.insert_ip(loginip);
 			session.setAttribute("i_id", user.getUser_id()); // 로그인 상태 유지
 		}
 		model.addAttribute("result", result);
 		return "user/login";
 	}
-	
-	
+
 	@RequestMapping("user/main")
-	public String main(String test, Model model,HttpServletRequest request, HttpSession session) {
-		test=request.getLocalAddr();
+	public String main(String test, Model model, HttpServletRequest request, HttpSession session) {
+		test = request.getLocalAddr();
 		System.out.println(test);
-		model.addAttribute("test",test);
+		model.addAttribute("test", test);
 		return "user/main";
 	}
 
