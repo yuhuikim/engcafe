@@ -16,6 +16,7 @@
 	</resultMap>
 
 	<!-- myBatis에서 객체명은 소문자로 한다. -->
+	<!-- 받아온 #{user_id}값으로 검색을 하고 있으면 select 하란 뜻!!! -->
 	<select id="select" parameterType="string" resultType="user">
 		select *
 		from user_info where user_id = #{user_id}

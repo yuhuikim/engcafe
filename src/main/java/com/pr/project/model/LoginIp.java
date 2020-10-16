@@ -9,4 +9,5 @@ public class LoginIp {
 	private String i_id;
 	private String i_ip;
 	private Date i_logdate;
+
 }

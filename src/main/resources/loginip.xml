@@ -8,4 +8,17 @@
 		<result property="i_ip" column="i_ip" />
 		<result property="i_logdate" column="i_logdate" />
 	</resultMap>
+
+	<!-- myBatis에서 객체명은 소문자로 한다. -->
+	<!-- 받아온 #{i_id}값으로 검색을 하고 있으면 select 하란 뜻!!! -->
+	<select id="select" parameterType="string" resultType="loginip">
+		select * from login_ip_history where i_id = #{i_id}
+	</select>
+
+	<!-- seq_loginip.nextval -->
+	<insert id="insert" parameterType="loginip">
+		insert into login_ip_history
+		values(seq_loginip.nextval,#{i_id},#{i_ip},sysdate)
+	</insert>
+
 </mapper>

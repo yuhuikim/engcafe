@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.pr.project.model.LoginIp;
 import com.pr.project.model.User;
+import com.pr.project.service.LoginIpService;
 import com.pr.project.service.UserService;
 
 @Controller
@@ -20,6 +21,8 @@ public class UserController {
 
 	@Autowired
 	private UserService us;
+	@Autowired
+	private LoginIpService ls;
 
 	@RequestMapping("user/joinForm")
 	public String joinForm() {
@@ -110,7 +113,7 @@ public class UserController {
 			result = -1; // 없거나 탈퇴한 회원이다.
 		else if (user.getUser_pwd().equals(ur.getUser_pwd())) {
 			result = 1; // 로그인 성공
-
+			loginip.setI_id(user.getUser_id()); 
 			loginip.setI_ip(request.getLocalAddr()); // ip setting
 			session.setAttribute("id", user.getUser_id()); // 로그인 상태 유지
 		}

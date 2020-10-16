@@ -12,14 +12,14 @@
 <body>
 	<c:if test="${result > 0}">
 		<script type="text/javascript">
-			alert("로그인 성공");
+			alert("로그인 성공!");
 			location.href = "main.html";
 		</script>
 	</c:if>
 
 	<c:if test="${result == 0}">
 		<script type="text/javascript">
-			alert("암호를 잊으셨나요?");
+			alert("암호가 틀렸습니다.");
 			history.go(-1);
 		</script>
 	</c:if>
