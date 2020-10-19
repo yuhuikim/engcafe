@@ -27,7 +27,7 @@
 		<div class="container" style="float:left;width:700px;border:2px solid #e5e5e5;border-radius:10px;padding-top:10px;padding-bottom:1px;">
 	 		<table>
 				<tr>
-					<td><p style="float:left;font-size:13px;font-weight:bold;line-height:1px;" onclick="">tempnick</p></td>
+					<td><p style="float:left;font-size:13px;font-weight:bold;padding-top:1px;line-height:1px;" onclick="">tempnick</p></td>
 				</tr>
 				<tr>
 					<td>

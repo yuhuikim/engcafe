@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.pr.project.model.BigCategory;
 import com.pr.project.service.BigCategoryService;
-import com.pr.project.service.BoardService;
 
 @Controller
 public class BigCategoryController {

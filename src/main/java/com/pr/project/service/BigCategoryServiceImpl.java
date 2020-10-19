@@ -3,7 +3,6 @@ package com.pr.project.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.pr.project.dao.BigCategoryDao;
-import com.pr.project.dao.BoardDao;
 import com.pr.project.model.BigCategory;
 
 @Service

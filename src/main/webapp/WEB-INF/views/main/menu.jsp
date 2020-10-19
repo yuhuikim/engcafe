@@ -136,7 +136,7 @@ $(function(){
 	<div style="height:40px;padding-top:3px;border-top:2px solid black;border-bottom:1px solid #ededed;">
 	
 	<u:categoriestag />
-	<a href="replyList.html?r_b_num=100">시험용</a>
+	<a href="replyList.html?r_b_num=100">시험용</a><br />
 	</div>
 	</section>
 </div>
