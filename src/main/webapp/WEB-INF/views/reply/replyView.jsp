@@ -26,15 +26,15 @@
 		var rows = 3 /* 3+0.5*r_level; */
 		var cols = 90 /* 100-r_level*8; */
 		// 읽은 글을 편집 할 수 있도록 textarea에 넣어야 함
-		$('#replRow_'+r_num).html('<td id="replCol_'+r_num+'" colspan="12"></td>');	
-		$('#replCol_'+r_num).html('<div class="container" align="left" style="width:700px">'+
-			'<div class="container" style="float:left;width:700px;border:2px solid #e5e5e5;border-radius:10px;padding-top:15px;padding-bottom:15px;">'+
-			'<table><tr><td><p style="float:left;font-size:13px;font-weight:bold;" onclick="">tempnick</p></td></tr><tr><td>'+
-			'<textarea id="rCont2_'+r_num+'" rows="'+rows+'" cols="'+cols+'" style="float:left;border:none;outline:none;width:640px;font-size:13px"'+ 
+		$('#replRow_'+r_num).html('<td id="replCol_'+r_num+'" colspan="12" style="height:120px;padding-top:13px;"></td>');	
+		$('#replCol_'+r_num).html('<div class="container" style="float:left;width:700px">'+
+			'<div class="container" style="float:left;width:700px;border:2px solid #e5e5e5;border-radius:10px;padding-top:10px;padding-bottom:1px;">'+
+			'<table><tr><td><p style="float:left;font-size:13px;font-weight:bold;line-height:1px;" onclick="">tempnick</p></td></tr><tr><td>'+
+			'<textarea id="rCont2_'+r_num+'" rows="'+rows+'" cols="'+cols+'" style="float:left;border:none;outline:none;width:640px;font-size:12px"'+ 
 			'name="r_content" cols="90" rows="3">'+txt+'</textarea></td></tr><tr><td><p><img src="${path }/resources/images/i8.jpg"'+
 			'alt="" style="float:left;cursor:pointer" onclick=""/><img src="${path }/resources/images/i9.jpg" alt="" style="float:left;cursor:pointer"'+
 			'onclick=""/><button type="button" style="float:right;border-radius:6px;border:none;outline:none;margin-right:10px;font-size:13px;'+
-			'background-color:#e0f8eb;color:#009f47;font-weight:bold;" onclick="up('+r_b_num+','+r_num+')">등록</button>'+
+			'background-color:#e0f8eb;color:#009f47;font-weight:bold;" onclick="up('+r_b_num+','+r_num+')">수정</button>'+
 			'<button type="button" style="float:right;border-radius:6px;border:none;outline:none;font-size:13px;background-color:transparent;'+
 			'color:#a3a3a3;font-weight:bold;" onclick="lst('+r_b_num+')">취소</button></p></td></tr></table></div></div></div>'
 		);
@@ -136,13 +136,14 @@
 								</p>
 							</td>
 						</tr>
-						<tr id="replDiv_${rl.r_num}" style="display:none;width:700px">
-	 						<td style="float:left;width:50px;height:140px;padding-top:25px;">
+						<tr id="replDiv_${rl.r_num}" style="display:none;width:800px;">
+	 						<td style="float:left;width:50px;height:120px;padding-top:25px;">
 								<span id="replIcon_${rl.r_num}" onmouseover="iconDown(${rl.r_num})" onclick="iconUp(${rl.r_num})" onmouseout="stopIconDown(${rl.r_num})"
-								 class="glyphicon glyphicon-circle-arrow-down" style="cursor:pointer;float:right;font-size:30px;color:#d6d6d6"></span>
+								 class="glyphicon glyphicon-circle-arrow-down" style="cursor:pointer;float:right;font-size:25px;color:#d6d6d6"></span>
 							</td> 
-							<td colspan="11" id="replInDiv_${rl.r_num}" align="left" style="width:650px;height:140px;padding-top:10px;padding-bottom:10px">
+							<td colspan="11" id="replInDiv_${rl.r_num}" align="left" style="width:650px;height:120px;padding-top:13px;">
 							</td>
+							
 						</tr>
 						
 					</c:if>

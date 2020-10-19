@@ -24,10 +24,10 @@
 		<input type="hidden" name="r_id" value="tempid">
 		<input type="hidden" name="r_nick" value="tempnick">
 		
-		<div class="container" style="float:left;width:700px;border:2px solid #e5e5e5;border-radius:10px;padding-top:10px;padding-bottom:10px;">
+		<div class="container" style="float:left;width:700px;border:2px solid #e5e5e5;border-radius:10px;padding-top:10px;padding-bottom:1px;">
 	 		<table>
 				<tr>
-					<td><p style="float:left;font-size:13px;font-weight:bold;" onclick="">tempnick</p></td>
+					<td><p style="float:left;font-size:13px;font-weight:bold;line-height:1px;" onclick="">tempnick</p></td>
 				</tr>
 				<tr>
 					<td>
