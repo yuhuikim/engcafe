@@ -82,7 +82,12 @@
 			<c:if test="${not empty replyList }">
 				<c:forEach var="rl" items="${replyList }">
 					<c:if test="${rl.r_del=='y'}">
-						<!-- <tr><td colspan="12">삭제된 댓글입니다.</td></tr> -->
+						<tr>
+							<c:if test="${rl.r_level>0 }"><td colspan="${rl.r_level}"></td></c:if>
+							<td colspan="12-${rl.r_level}" style="font-size:14px;line-height:50%;">
+								<%-- <c:if test="${rl.r_level>0 }">┕</c:if> --%>
+								삭제된 댓글입니다.</td>
+						</tr>
 					</c:if>
 					<c:if test="${rl.r_del!='y'}">
 						<tr id="replRow_${rl.r_num}" style="border-top:1px solid #cdcdcd;">
@@ -90,8 +95,8 @@
 							<td style="width:60px;padding-top:20px;">
 								<span class="glyphicon glyphicon-user" style="float:left;color:#dfe1e5;font-size:40px"></span>
 							</td>
-							<td colspan="11-${rl.r_level}" style="padding-top:20px;">
-								<p style="font-size:12px;font-weight:bold;cursor:pointer;">${rl.r_nick }
+							<td colspan="11-${rl.r_level}">
+								<p style="padding-top:10px;font-size:13px;font-weight:bolder;cursor:pointer;margin-bottom:1px;line-height:1px;">${rl.r_nick }
 									<span id="modIcon_${rl.r_num}" style="float:right;color:#bdbdbd;cursor:pointer;margin:5px;" class="glyphicon glyphicon-cog" onmouseover="modKey(${rl.r_num})" onmouseout="stopModKey(${rl.r_num})"></span>
 					
 								 	<div id="tab_pop_${rl.r_num}" style="display:none">	
@@ -119,14 +124,14 @@
 									</div>
 								
 								</p>
-								<p id="rCont_${rl.r_num }" style="font-size:14px">${rl.r_content }</p>
-								<p style="float:left;font-size:11px;color:#979797 ">${rl.r_update }&nbsp&nbsp
+								<p id="rCont_${rl.r_num }" style="font-size:14px;margin-top:1px;">${rl.r_content }</p>
+								<p style="float:left;font-size:11px;color:#979797;line-height:0%;">${rl.r_update }&nbsp&nbsp
 								<c:if test="${rl.r_level<10}">
-									<p id="rKey_${rl.r_num }" style="float:left;font-size:13px;color:#979797;cursor:pointer" onclick="replKey(${rl.r_num},${rl.r_level})">답글쓰기</p>
+									<p id="rKey_${rl.r_num }" style="float:left;font-size:10px;color:#979797;cursor:pointer;line-height:0%;" onclick="replKey(${rl.r_num},${rl.r_level})">답글쓰기</p>
 								</c:if>
 								<c:if test="${rl.r_level>=10}">
 								
-									<p id="rKey_${rl.r_num }" style="float:left;padding-top:2px;font-size:5px;color:#979797;">더 댓글을 달 수 없는 댓글입니다.</p>
+									<p id="rKey_${rl.r_num }" style="float:left;font-size:5px;color:#979797;line-height:0%;">더 댓글을 달 수 없는 댓글입니다.</p>
 								</c:if>
 								</p>
 							</td>

@@ -24,14 +24,14 @@
 		<input type="hidden" name="r_id" value="tempid">
 		<input type="hidden" name="r_nick" value="tempnick">
 		
-		<div class="container" style="float:left;width:700px;border:2px solid #e5e5e5;border-radius:10px;padding-top:15px;padding-bottom:15px;">
+		<div class="container" style="float:left;width:700px;border:2px solid #e5e5e5;border-radius:10px;padding-top:10px;padding-bottom:10px;">
 	 		<table>
 				<tr>
 					<td><p style="float:left;font-size:13px;font-weight:bold;" onclick="">tempnick</p></td>
 				</tr>
 				<tr>
 					<td>
-						<textarea style="float:left;border:none;outline:none;width:640px;font-size:13px" name="r_content" cols="90" rows="3" placeholder="댓글을 남겨보세요"></textarea>
+						<textarea style="float:left;border:none;outline:none;width:640px;font-size:12px" name="r_content" cols="90" rows="3" placeholder="댓글을 남겨보세요"></textarea>
 					</td>
 				</tr>
 				<tr>

@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<div style="margin-left:200px;width:900px;padding-top:30px;padding-bottom:20px;">
+<div style="margin-left:200px;width:900px;padding-top:20px;padding-bottom:20px;">
 	<div class="container" style="width:860px;height:1000px;padding-top:40px;padding-bottom:20px;border:4px solid #ededed;">	
 		 <div id="banners" class="container" style="display:active;padding-top:100px;padding-bottom:60px;width:740;height:915;background-image: url('${path}/resources/images/mainbg.jpg');">
 		
