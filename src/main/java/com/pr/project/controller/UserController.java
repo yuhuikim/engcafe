@@ -61,7 +61,6 @@ public class UserController {
 
 		User ui = us.select(user.getUser_id());
 		User un = us.select1(user.getUser_nickname());
-//ad
 		if (ui == null && un == null) { // 둘 다 중복 아닌 경우
 			user.setUser_ip(request.getLocalAddr()); // ip setting
 			result = us.insert(user);
@@ -76,38 +75,13 @@ public class UserController {
 		return "user/join";
 	}
 
-//	@RequestMapping("join2")
-//	public String join2(Member user, Model model, HttpSession session, MultipartHttpServletRequest mhsr)
-//			throws IOException {
-//		String real = session.getServletContext().getRealPath("/upload");
-//		List<MultipartFile> list = mhsr.getFiles("file");
-//		List<MemberPhoto> photos = new ArrayList<>();
-//		for (MultipartFile mf : list) {
-//			MemberPhoto mp = new MemberPhoto();
-//			String fileName = mf.getOriginalFilename();
-//			mp.setFileName(fileName);
-//			mp.setId(member.getId());
-//			photos.add(mp);
-//			FileOutputStream fos = new FileOutputStream(new File(real + "/" + fileName));
-//			fos.write(mf.getBytes());
-//			fos.close();
-//			// 마지막 그림을 기록, 의미없음
-//			member.setFileName(fileName);
-//		}
-//		int result = us.insert(member);
-//		us.insertPhoto(photos);
-//		model.addAttribute("result", result);
-//		return "join";
-//	}
-
 	@RequestMapping("user/loginForm")
 	public String loginForm() {
 		return "user/loginForm";
 	}
 
 	@RequestMapping("user/login")
-	public String login(String test, User user, LoginIp loginip, Model model, HttpServletRequest request,
-			HttpSession session) {
+	public String login(User user, LoginIp loginip, Model model, HttpServletRequest request, HttpSession session) {
 		int result = 0;
 		User ur = us.select(user.getUser_id());
 
@@ -117,10 +91,6 @@ public class UserController {
 			result = 1; // 로그인 성공
 			loginip.setI_id(user.getUser_id());
 			loginip.setI_ip(request.getLocalAddr()); // ip setting
-			System.out.println("ip 는 이거얌" + request.getLocalAddr());
-			test = request.getLocalAddr();
-			System.out.println(loginip.getI_ip());
-			model.addAttribute("test", test);
 			ls.insert_ip(loginip);
 			session.setAttribute("i_id", user.getUser_id()); // 로그인 상태 유지
 		}
@@ -129,10 +99,8 @@ public class UserController {
 	}
 
 	@RequestMapping("user/main")
-	public String main(String test, Model model, HttpServletRequest request, HttpSession session) {
-		test = request.getLocalAddr();
-		System.out.println(test);
-		model.addAttribute("test", test);
+	public String main(Model model, HttpServletRequest request, HttpSession session) {
+
 		return "user/main";
 	}
 

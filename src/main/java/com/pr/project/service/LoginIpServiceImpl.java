@@ -18,8 +18,8 @@ public class LoginIpServiceImpl implements LoginIpService {
 
 	@Override
 	public int insert_ip(LoginIp loginip) {
-		System.out.println("서비스에서  id 받음"+loginip.getI_id());
-		System.out.println("서비스에서 ip 받음"+ loginip.getI_ip());
+//		System.out.println("서비스에서  id 받음" + loginip.getI_id());
+//		System.out.println("서비스에서 ip 받음" + loginip.getI_ip());
 		return ld.insert_ip(loginip);
 	}
 

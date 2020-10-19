@@ -28,3 +28,4 @@ public class UserDaoImpl implements UserDao {
 		return sst.insert("userns.insert", user);
 	}
 }
+

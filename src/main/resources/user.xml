@@ -30,6 +30,7 @@
 	<!-- insert, modify, delete를 하면 성공한 갯수가 나온다. 그래서 returnType이 필요없음 -->
 	<insert id="insert" parameterType="user">
 		insert into user_info
-		values(#{user_id},#{user_nickname},#{user_name},#{user_age},#{user_email},#{user_ip},1,'n',sysdate,sysdate,#{user_pwd})
+		values(#{user_id},#{user_nickname},#{user_name},#{user_age},
+		#{user_email},#{user_ip},1,'n',sysdate,sysdate,#{user_pwd})
 	</insert>
 </mapper>

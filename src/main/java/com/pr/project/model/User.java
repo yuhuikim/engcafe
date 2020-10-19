@@ -18,3 +18,4 @@ public class User {
 	private Date user_update;
 	private String user_pwd;
 }
+

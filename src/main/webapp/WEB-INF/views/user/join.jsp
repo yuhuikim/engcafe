@@ -10,7 +10,7 @@
 <body>
 	<c:if test="${result>0}">
 		<script type="text/javascript">
-			alert("회원가입이 완료되었습니다.");
+			alert("회원가입이 완료 되었습니다.");
 			location.href = "loginForm.html";
 		</script>
 	</c:if>

@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>꿀카페 : 회원가입</title>
 
 <script type="text/javascript">
 	function idChk() {
@@ -45,11 +45,6 @@
 	 } */
 
 	function idChk2() {
-		/* 	if (frm.user_id.value.length < 4 || frm.user_id.value.length > 12 ) {
-				alert("아이디는 4 - 12글자");
-				frm.user_id.focus();
-				return false;
-			} */
 
 		// /^: 시작,  $/: 끝, []: 속에 글자 중에 하나
 		// .*(?=.{4,8}) 점을 포함한 한글자 이상을 사용하는 4~8이내
@@ -98,12 +93,11 @@
 						<c:when test="${not empty user_id }">
 							<td><input type="text" name="user_id" value="${user_id }"
 								required="required" autofocus="autofocus">&nbsp; <input
-								type="button" class="btn btn-info btn-sm" value="중복확인"
-								onclick="idChk()"></td>
+								type="button" class="btn btn-info btn-sm" value="중복확인" onclick="idChk()"></td>
 						</c:when>
 						<c:when test="${empty user_id }">
-							<td><input type="text" name="user_id" 
-								required="required" autofocus="autofocus">&nbsp;<input type="button"
+							<td><input type="text" name="user_id" required="required"
+								autofocus="autofocus">&nbsp;<input type="button"
 								class="btn btn-info btn-sm" value="중복확인" onclick="idChk()"></td>
 						</c:when>
 					</c:choose>
@@ -118,8 +112,7 @@
 						<c:when test="${not empty user_nickname }">
 							<td><input type="text" name="user_nickname"
 								value="${user_nickname }" class="txt t02" required="required">&nbsp;
-								<input type="button" class="btn btn-info btn-sm" value="중복확인"
-								onclick="nickChk()"></td>
+								<input type="button" class="btn btn-info btn-sm" value="중복확인" onclick="nickChk()"></td>
 						</c:when>
 						<c:when test="${empty user_nickname }">
 							<td><input type="text" name="user_nickname" class="txt t02"
@@ -137,8 +130,7 @@
 
 				<tr>
 					<td>이름 <span class="glyphicon glyphicon-user"></span></td>
-					<td><input type="text" name="user_name" required="required"
-						></td>
+					<td><input type="text" name="user_name" required="required"></td>
 				</tr>
 
 				<tr>
