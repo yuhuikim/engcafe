@@ -92,7 +92,7 @@ public class UserController {
 			loginip.setI_id(user.getUser_id());
 			loginip.setI_ip(request.getLocalAddr()); // ip setting
 			ls.insert_ip(loginip);
-			session.setAttribute("i_id", user.getUser_id()); // 로그인 상태 유지
+			session.setAttribute("user_id", user.getUser_id()); // 로그인 상태 유지
 		}
 		model.addAttribute("result", result);
 		return "user/login";
