@@ -46,8 +46,6 @@ public class ReplyController {
 	
 	@RequestMapping("udpateReply.html")
 	public String update(String r_content, int r_b_num, int r_num, Model model) {
-		System.out.println("r_b_num="+r_b_num);
-		System.out.println("r_num="+r_num);
 		Reply reply = new Reply();
 		reply.setR_num(r_num);
 		reply.setR_content(r_content);

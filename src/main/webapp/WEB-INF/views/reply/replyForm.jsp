@@ -11,7 +11,7 @@
 </head>
 <body>
 
-<div id="replyForm" class="container" align="left">
+<div id="replyForm" class="container" align="left" style="width:750px;">
 	<form action="insertReply.html" method="post">
 		<input type="hidden" name="r_num" value="0">	
 		<input type="hidden" name="r_b_num" value="100">

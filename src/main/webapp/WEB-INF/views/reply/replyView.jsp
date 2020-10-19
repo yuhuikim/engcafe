@@ -27,7 +27,7 @@
 		var cols = 90 /* 100-r_level*8; */
 		// 읽은 글을 편집 할 수 있도록 textarea에 넣어야 함
 		$('#replRow_'+r_num).html('<td id="replCol_'+r_num+'" colspan="12"></td>');	
-		$('#replCol_'+r_num).html('<div class="container" align="left" style="width:780px">'+
+		$('#replCol_'+r_num).html('<div class="container" align="left" style="width:700px">'+
 			'<div class="container" style="float:left;width:700px;border:2px solid #e5e5e5;border-radius:10px;padding-top:15px;padding-bottom:15px;">'+
 			'<table><tr><td><p style="float:left;font-size:13px;font-weight:bold;" onclick="">tempnick</p></td></tr><tr><td>'+
 			'<textarea id="rCont2_'+r_num+'" rows="'+rows+'" cols="'+cols+'" style="float:left;border:none;outline:none;width:640px;font-size:13px"'+ 
@@ -40,7 +40,7 @@
 		);
 	}
  	function up(r_b_num, r_num){
- 		alert($('#rCont2_'+r_num).val());
+ 		alert("수정되었습니다");
         $(location).attr('href', 'udpateReply.html?r_content='+$('#rCont2_'+r_num).val()+'&r_b_num='+r_b_num+'&r_num='+r_num); 
 	}
 	function lst(r_b_num){
@@ -54,7 +54,7 @@
 		$('#tab_pop_'+r_num).attr('style','display:none;');
 	}
 	function replKey(r_num,r_level){
-		$('#replDiv_'+r_num).attr('style','display:active;');
+		$('#replDiv_'+r_num).attr('style','display:active;width:780px;');
   		$('#replInDiv_'+r_num).load('replyForm.html?r_ref='+r_num);		
 	}
 	function iconDown(r_num){
@@ -78,7 +78,7 @@
 				<a href="" style="margin-left:10px;font-size:15px;color:#333333;font-weight:bolder">등록순</a> 
 				<a href="" style="margin-left:10px;font-size:14px;color:#bdbdbd;font-weight:bolder">최신순</a>
 			</p>
-			<table class="table" style="float:left;width:850px;line-height:25px">
+			<table class="table" style="float:left;width:850px;">
 			<c:if test="${not empty replyList }">
 				<c:forEach var="rl" items="${replyList }">
 					<c:if test="${rl.r_del=='y'}">
@@ -131,12 +131,12 @@
 								</p>
 							</td>
 						</tr>
-						<tr id="replDiv_${rl.r_num}" style="display:none;">
+						<tr id="replDiv_${rl.r_num}" style="display:none;width:700px">
 	 						<td style="float:left;width:50px;height:140px;padding-top:25px;">
 								<span id="replIcon_${rl.r_num}" onmouseover="iconDown(${rl.r_num})" onclick="iconUp(${rl.r_num})" onmouseout="stopIconDown(${rl.r_num})"
 								 class="glyphicon glyphicon-circle-arrow-down" style="cursor:pointer;float:right;font-size:30px;color:#d6d6d6"></span>
 							</td> 
-							<td colspan="11" id="replInDiv_${rl.r_num}" align="left" style="height:140px;padding-top:10px;padding-bottom:10px">
+							<td colspan="11" id="replInDiv_${rl.r_num}" align="left" style="width:650px;height:140px;padding-top:10px;padding-bottom:10px">
 							</td>
 						</tr>
 						
@@ -145,7 +145,7 @@
 			</c:if>	
 			<tr><td colspan="12" style="padding-top:20px;">
 			
-			<div id="replyFormDisp" style="width:850px"></div>
+			<div id="replyFormDisp" style="width:800px"></div>
 			
 			</td></tr>
 		</table>
