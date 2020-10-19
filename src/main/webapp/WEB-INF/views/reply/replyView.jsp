@@ -26,25 +26,25 @@
 		var rows = 3 /* 3+0.5*r_level; */
 		var cols = 90 /* 100-r_level*8; */
 		// 읽은 글을 편집 할 수 있도록 textarea에 넣어야 함
-		$('#replRow_'+r_num).html('<td id="replCol_'+r_num+'" colspan="12" style="height:120px;padding-top:12px;"></td>');	
-		$('#replCol_'+r_num).html('<div class="container" id="#updReplCol_'+r_num+'" style="display:block;float:left;width:700px">'+
-			'<div class="container" style="float:left;width:700px;border:2px solid #e5e5e5;border-radius:10px;padding-top:10px;padding-bottom:1px;">'+
+		$('#replRow_'+r_num).html('<td id="replCol_'+r_num+'" colspan="12" style="height:120px;padding-top:13px;"></td>');	
+		$('#replCol_'+r_num).html('<div class="container" style="float:left;width:780px">'+
+			'<div class="container" style="float:left;width:760px;border:2px solid #e5e5e5;border-radius:10px;padding-top:10px;padding-bottom:1px;">'+
 			'<table><tr><td><p style="float:left;font-size:13px;font-weight:bold;padding-top:1px;line-height:1px;" onclick="">tempnick</p></td></tr><tr><td>'+
-			'<textarea id="rCont2_'+r_num+'" rows="'+rows+'" cols="'+cols+'" style="float:left;border:none;outline:none;width:640px;font-size:12px"'+ 
+			'<textarea id="rCont2_'+r_num+'" rows="'+rows+'" cols="'+cols+'" style="float:left;border:none;outline:none;width:720px;font-size:12px"'+ 
 			'name="r_content" cols="90" rows="3">'+txt+'</textarea></td></tr><tr><td><p><img src="${path }/resources/images/i8.jpg"'+
 			'alt="" style="float:left;cursor:pointer" onclick=""/><img src="${path }/resources/images/i9.jpg" alt="" style="float:left;cursor:pointer"'+
 			'onclick=""/><button type="button" style="float:right;border-radius:6px;border:none;outline:none;margin-right:10px;font-size:13px;'+
 			'background-color:#e0f8eb;color:#009f47;font-weight:bold;" onclick="up('+r_b_num+','+r_num+')">수정</button>'+
 			'<button type="button" style="float:right;border-radius:6px;border:none;outline:none;font-size:13px;background-color:transparent;'+
-			'color:#a3a3a3;font-weight:bold;" onclick="lst('+r_num+')">취소</button></p></td></tr></table></div></div></div>'
+			'color:#a3a3a3;font-weight:bold;" onclick="lst('+r_b_num+','+r_num+')">취소</button></p></td></tr></table></div></div></div>'
 		);
 	}
  	function up(r_b_num, r_num){
  		alert("수정되었습니다");
         $(location).attr('href', 'udpateReply.html?r_content='+$('#rCont2_'+r_num).val()+'&r_b_num='+r_b_num+'&r_num='+r_num); 
 	}
-	function lst(r_num){
-		$('#updReplCol_'+r_num).attr('style','display:none;');
+	function lst(r_b_num){
+		$(location).attr('href', 'replyList.html?r_b_num='+r_b_num);
 	} 
 	function modKey(r_num){
 		$('#tab_pop_'+r_num).appendTo('#modIcon_'+r_num);

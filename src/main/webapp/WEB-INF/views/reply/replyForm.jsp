@@ -11,7 +11,7 @@
 </head>
 <body>
 
-<div id="replyForm" class="container" align="left" style="width:750px;">
+<div id="replyForm" class="container" align="left" style="width:780px;">
 	<form action="insertReply.html" method="post">
 		<input type="hidden" name="r_num" value="0">	
 		<input type="hidden" name="r_b_num" value="100">
@@ -24,14 +24,14 @@
 		<input type="hidden" name="r_id" value="tempid">
 		<input type="hidden" name="r_nick" value="tempnick">
 		
-		<div class="container" style="float:left;width:700px;border:2px solid #e5e5e5;border-radius:10px;padding-top:10px;padding-bottom:1px;">
+		<div class="container" style="float:left;width:760px;border:2px solid #e5e5e5;border-radius:10px;padding-top:10px;padding-bottom:1px;">
 	 		<table>
 				<tr>
 					<td><p style="float:left;font-size:13px;font-weight:bold;padding-top:1px;line-height:1px;" onclick="">tempnick</p></td>
 				</tr>
 				<tr>
 					<td>
-						<textarea style="float:left;border:none;outline:none;width:640px;font-size:12px" name="r_content" cols="90" rows="3" placeholder="댓글을 남겨보세요"></textarea>
+						<textarea style="float:left;border:none;outline:none;width:720px;font-size:12px" name="r_content" cols="90" rows="3" placeholder="댓글을 남겨보세요"></textarea>
 					</td>
 				</tr>
 				<tr>
