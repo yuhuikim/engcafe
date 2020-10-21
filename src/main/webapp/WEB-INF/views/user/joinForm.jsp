@@ -33,8 +33,8 @@
 			return false;
 		}
 		$.post('idChk.html', 'user_id=' + frm.user_id.value, function(data) {
-			//$('#disp').html(data);
-			alert(data);
+			$('#idChk').html(data);
+			//alert(data);
 		});
 	}
 	function nickChk() {
@@ -46,8 +46,8 @@
 		}
 		$.post('nickChk.html', 'user_nickname=' + frm.user_nickname.value,
 				function(data) {
-					//$('#disp').html(data);
-					alert(data);
+					$('#nickChk').html(data);
+					//alert(data);
 				});
 	}
 	/* 	function chk() {
@@ -173,7 +173,7 @@ body {
 
 <body class="text-center">
 
-
+	<%-- 
 	<c:choose>
 		<c:when test="${not empty message }">
 			<script type="text/javascript">
@@ -186,7 +186,7 @@ body {
 			</script>
 		</c:when>
 	</c:choose>
-
+ --%>
 	<form class="form-signin" action="join.html" method="post"
 		enctype="multipart/frm-data" name="frm" onsubmit="return idChk2()">
 
@@ -203,6 +203,8 @@ body {
 			autofocus> -->
 
 		<!-- 여기 수정 -->
+
+
 		<c:choose>
 			<c:when test="${not empty user_id }">
 				<span class="form-control" style="border: 1px solid #ced4da;">
@@ -210,7 +212,7 @@ body {
 					style="border: 1px solid white; margin: 0px; outline: none;"
 					size="30" class="form-control" value="${user_id }"
 					placeholder="아이디" required="required" autofocus="autofocus">
-					&nbsp; <span> <img height="23" , width="23"
+					&nbsp; <span> <img height="23" width="23"
 						src="${path }/resources/images/logo/confirm_logo.png"
 						onclick="idChk()">
 				</span>
@@ -222,19 +224,19 @@ body {
 					<input type="text" name="user_id"
 					style="border: 1px solid white; outline: none;" size="30"
 					required="required" placeholder="아이디" autofocus="autofocus">&nbsp;
-					<span> <img height="23" , width="23"
+					<span> <img height="23" width="23"
 						src="${path }/resources/images/logo/confirm_logo.png"
 						onclick="idChk()">
 				</span>
 				</span>
 			</c:when>
-
 		</c:choose>
+		<div id="idChk" class="err"
+			style="font-family: verdana; font-size: 15px; color: red;"></div>
+
 		<div style="padding-bottom: 10px"></div>
+
 		<label for="input2" class="sr-only">Nickname</label>
-		<!-- <input
-			type="text" name="user_nickname" class="form-control"
-			placeholder="닉네임" required> -->
 
 
 		<c:choose>
@@ -244,12 +246,13 @@ body {
 					style="border: 1px solid white; margin: 0px; outline: none;"
 					size="30" class="form-control" value="${user_nickname }"
 					placeholder="닉네임" required="required" autofocus="autofocus">
-					&nbsp; <span> <img height="23" , width="23"
+					&nbsp; <span> <img height="23" width="23"
 						src="${path }/resources/images/logo/confirm_logo.png"
 						onclick="nickChk()">
 				</span>
 				</span>
 			</c:when>
+
 			<c:when test="${empty user_nickname }">
 				<span class="form-control"> <input type="text"
 					name="user_nickname"
@@ -262,6 +265,9 @@ body {
 			</c:when>
 		</c:choose>
 
+		<div id="nickChk" class="err"
+			style="font-family: verdana; font-size: 15px; color: red;"></div>
+			
 		<div style="padding-bottom: 10px"></div>
 
 		<label for="input5" class="sr-only">Name</label> <input type="text"
@@ -280,11 +286,7 @@ body {
 		<label for="input4" class="sr-only">Password2</label> <input
 			type="password" name="user_pwd2" class="form-control"
 			placeholder="  비밀번호 확인" required>
-		<%-- 	<c:if test="${errors.confirmPassword }">비밀번호 확인을 입력하세요.</c:if>
-		<c:if test="${errors.notMatch }">
-			<div class="alert alert-danger" role="alert">암호와 확인이 일치하지 않습니다.
-			</div>
-		</c:if> --%>
+	
 		<div style="padding-bottom: 10px"></div>
 		<label for="input6" class="sr-only">Age</label> <input type="number"
 			name="user_age" min="14" max="100" class="form-control"
@@ -301,7 +303,7 @@ body {
 		</p>
 		<button class="btn btn-lg btn-primary btn-block" type="submit">가입하기
 		</button>
-		<!-- 	<p class="mt-5 mb-3 text-muted">㈜ 우아한형제들</p> -->
+			<p class="mt-5 mb-3 text-muted">㈜ 네이버</p> 
 	</form>
 </body>
 </html>
