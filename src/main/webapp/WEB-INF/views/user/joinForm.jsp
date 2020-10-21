@@ -105,13 +105,14 @@ body {
 .form-signin .checkbox {
 	font-weight: 400;
 }
+
 .form-signin .form-control2 {
 	position: relative;
 	box-sizing: border-box;
 	height: auto;
 	font-size: 16px;
-	
 }
+
 .form-signin .form-control {
 	position: relative;
 	box-sizing: border-box;
@@ -125,36 +126,32 @@ body {
 }
 
 .form-signin input[type="number"] {
-	padding-top : 7px;
-	padding-bottom : 7px;
-	
+	padding-top: 7px;
+	padding-bottom: 7px;
 	border-bottom-right-radius: 0;
 	border-bottom-left-radius: 0;
 }
+
 .form-signin input[type="email"] {
-	padding-top : 7px;
-	padding-bottom : 7px;
-	
+	padding-top: 7px;
+	padding-bottom: 7px;
 	border-bottom-right-radius: 0;
 	border-bottom-left-radius: 0;
 }
 
 .form-signin input[type="password"] {
-	padding-top : 7px;
-	padding-bottom : 7px;
-	
+	padding-top: 7px;
+	padding-bottom: 7px;
 	border-top-left-radius: 0;
 	border-top-right-radius: 0;
 }
 
 .form-signin input[type="text"] {
 	padding-top: 7px;
-	padding-bottom : 7px;
-	
+	padding-bottom: 7px;
 	border-top-left-radius: 0;
 	border-top-right-radius: 0;
 }
-
 
 .bd-placeholder-img {
 	font-size: 1.125rem;
@@ -193,11 +190,11 @@ body {
 	<form class="form-signin" action="join.html" method="post"
 		enctype="multipart/frm-data" name="frm" onsubmit="return idChk2()">
 
-		<div  id="header" role="banner" >
+		<div id="header" role="banner">
 			<a href="http://www.naver.com"></a> <img class="mb-4"
 				src="${path }/resources/images/logo/join_logo2.png">
 		</div>
-	
+
 		<!-- 		<h1 class="h3 mb-3 font-weight-normal">회원가입</h1> -->
 
 		<label for="input1" class="sr-only">ID</label>
@@ -208,23 +205,28 @@ body {
 		<!-- 여기 수정 -->
 		<c:choose>
 			<c:when test="${not empty user_id }">
-				<span class="form-control" style="border: 1px solid #ced4da;"> <input type="text" name="user_id"
+				<span class="form-control" style="border: 1px solid #ced4da;">
+					<input type="text" name="user_id"
 					style="border: 1px solid white; margin: 0px; outline: none;"
 					size="30" class="form-control" value="${user_id }"
 					placeholder="아이디" required="required" autofocus="autofocus">
-					&nbsp; <span> <img
-						src="${path }/resources/images/logo/confirm.gif" onclick="idChk()">
+					&nbsp; <span> <img height="23" , width="23"
+						src="${path }/resources/images/logo/confirm_logo.png"
+						onclick="idChk()">
 				</span>
 				</span>
 
 			</c:when>
 			<c:when test="${empty user_id }">
-				<span class="form-control" style="border: 1px solid #ced4da;"> <input type="text" name="user_id"
+				<span class="form-control" style="border: 1px solid #ced4da;">
+					<input type="text" name="user_id"
 					style="border: 1px solid white; outline: none;" size="30"
 					required="required" placeholder="아이디" autofocus="autofocus">&nbsp;
-					<span> <img src="${path }/resources/images/logo/confirm.gif"
+					<span> <img height="23" , width="23"
+						src="${path }/resources/images/logo/confirm_logo.png"
 						onclick="idChk()">
-				</span></span>
+				</span>
+				</span>
 			</c:when>
 
 		</c:choose>
@@ -242,8 +244,8 @@ body {
 					style="border: 1px solid white; margin: 0px; outline: none;"
 					size="30" class="form-control" value="${user_nickname }"
 					placeholder="닉네임" required="required" autofocus="autofocus">
-					&nbsp; <span> <img
-						src="${path }/resources/images/logo/confirm.gif"
+					&nbsp; <span> <img height="23" , width="23"
+						src="${path }/resources/images/logo/confirm_logo.png"
 						onclick="nickChk()">
 				</span>
 				</span>
@@ -253,8 +255,9 @@ body {
 					name="user_nickname"
 					style="border: 1px solid white; outline: none;" size="30"
 					required="required" placeholder="닉네임" autofocus="autofocus">&nbsp;
-					<span> <img src="${path }/resources/images/logo/confirm.gif"
-					 onclick="nickChk()">
+					<span> <img height="23" , width="23"
+						src="${path }/resources/images/logo/confirm_logo.png"
+						onclick="nickChk()">
 				</span></span>
 			</c:when>
 		</c:choose>
@@ -270,7 +273,7 @@ body {
 			type="password" name="user_pwd" class="form-control"
 			placeholder="  비밀번호" required>
 		<p
-			style="padding-top: 10px; color: gray; font-size: 11px;  margin: 0px">
+			style="padding-top: 10px; color: gray; font-size: 11px; margin: 0px">
 			※ 영문 대소문자/숫자/특수문자를 조합, 10~16자로 설정※</p>
 		<%-- <c:if test="${errors.password }">암호를 입력하세요.</c:if>--%>
 		<div style="padding-bottom: 10px"></div>
