@@ -24,6 +24,11 @@ public class ReplyServiceImpl implements ReplyService{
 	}
 	
 	@Override
+	public int selectOrigin(int r_ref) {
+		return rd.selectOrigin(r_ref);
+	}
+	
+	@Override
 	public int selectLevel(int r_ref) {
 		return rd.selectLevel(r_ref);
 	}
@@ -52,10 +57,20 @@ public class ReplyServiceImpl implements ReplyService{
 	public List<Reply> list(int r_b_num) {
 		return rd.list(r_b_num);
 	}
+	
+	@Override
+	public List<Reply> list2(Reply reply) {
+		return rd.list2(reply);
+	}
 
 	@Override
 	public int selectMaxStep(int r_b_num) {
 		return rd.selectMaxStep(r_b_num);
+	}
+
+	@Override
+	public int count(int r_b_num) {
+		return rd.count(r_b_num);
 	}
 
 }

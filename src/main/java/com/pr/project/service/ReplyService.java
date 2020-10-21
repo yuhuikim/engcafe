@@ -10,6 +10,8 @@ public interface ReplyService {
 
 	int maxNum();
 
+	int selectOrigin(int r_ref);
+	
 	int selectLevel(int r_ref);
 
 	int selectStep(int r_ref);
@@ -21,7 +23,12 @@ public interface ReplyService {
 	int delete(int r_num);
 
 	List<Reply> list(int r_b_num);
+	
+	List<Reply> list2(Reply reply);
 
 	int selectMaxStep(int r_b_num);
+
+	int count(int r_b_num);
+
 
 }

@@ -13,17 +13,17 @@ import com.pr.project.model.Reply;
 import com.pr.project.service.ReplyService;
 
 @Controller
-public class ReplyController {
+public class GuestBookController {
 	@Autowired
 	private ReplyService rs;
 	
-	@RequestMapping("replyForm.html")
+	@RequestMapping("guestBookForm.html")
 	public String replyForm(int r_ref, Model model) {
 		model.addAttribute("r_ref", r_ref);
-		return "/reply/replyForm";
+		return "/board/guestBookForm";
 	}
 	
-	@RequestMapping("insertReply.html")
+	@RequestMapping("insertGuestBook.html")
 	public String insert(Reply reply, Model model, HttpServletRequest request) {
 		reply.setR_ip(request.getLocalAddr());	
 		int rnum = rs.maxNum()+1;
@@ -43,29 +43,51 @@ public class ReplyController {
 		}
 		rs.insert(reply);
 		model.addAttribute("r_b_num", reply.getR_b_num());
-		return "redirect:replyList.html?r_b_num="+reply.getR_b_num();
+		return "redirect:guestBookView.html?r_b_num="+reply.getR_b_num();
 	}
 	
-	@RequestMapping("udpateReply.html")
+	@RequestMapping("udpateguestBook.html")
 	public String update(String r_content, int r_b_num, int r_num, Model model) {
 		Reply reply = new Reply();
 		reply.setR_num(r_num);
 		reply.setR_content(r_content);
 		rs.update(reply);
-		return "redirect:replyList.html?r_b_num="+r_b_num;
+		return "redirect:guestBookView.html?r_b_num="+r_b_num;
 	}
 	
-	@RequestMapping("deleteReply.html")
+	@RequestMapping("deleteguestBook.html")
 	public String delete(int r_b_num, int r_num, Model model) {
 		rs.delete(r_num);
-		return "redirect:replyList.html?r_b_num="+r_b_num;
+		return "redirect:guestBookView.html?r_b_num="+r_b_num;
+	}
+	
+	@RequestMapping("guestBookView.html")
+	public String view(int r_b_num, Model model) {
+		model.addAttribute("r_b_num", r_b_num);
+		return "/board/guestBookView";
 	}
 
-	@RequestMapping("replyList")
-	public String list(int r_b_num, Model model) {
-		List<Reply> replyList = rs.list(r_b_num);
+	@RequestMapping("guestBookList.html")
+	public String list(int r_b_num, int startNum, Model model) {
+	
+		int wholeNum = rs.count(r_b_num);
+		int rowPerPage = 10;
+		int endNum = startNum+rowPerPage-1;
+		
+		Reply reply = new Reply();
+		reply.setR_b_num(r_b_num);
+		reply.setStartNum(startNum);
+		if(wholeNum<endNum) endNum = wholeNum;
+		reply.setEndNum(endNum);
+		List<Reply> replyList = rs.list2(reply);
+
+		model.addAttribute("r_b_num", r_b_num);
+		model.addAttribute("startNum", startNum);
+		model.addAttribute("endNum", endNum);
+		model.addAttribute("wholeNum", wholeNum);
 		model.addAttribute("replyList", replyList);
-		return "/reply/replyView";
-	}
 
+		return "/board/guestBookList";
+	}
+	
 }

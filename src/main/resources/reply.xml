@@ -8,6 +8,10 @@
 	select nvl(max(r_num),0) from reply
 </select>
 
+<select id="selectOrigin" parameterType="integer" resultType="integer">
+	select r_origin from reply where r_num=#{r_ref}
+</select>
+
 <select id="selectLevel" parameterType="integer" resultType="integer">
 	select r_level from reply where r_num=#{r_ref}
 </select>
@@ -27,7 +31,7 @@
 
 <insert id="insert" parameterType="reply">
 	insert into reply values
-	 (#{r_num},#{r_b_num},#{r_ref},#{r_level},#{r_step},#{r_id},#{r_nick},#{r_content},sysdate,sysdate,#{r_ip},'n')
+	 (#{r_num},#{r_b_num},#{r_ref},#{r_origin},#{r_level},#{r_step},#{r_id},#{r_nick},#{r_content},sysdate,sysdate,#{r_ip},'n')
 </insert>
 
 <update id="update" parameterType="reply">
@@ -40,6 +44,15 @@
 
 <select id="list" parameterType="integer" resultType="reply">
 	select * from reply where r_b_num=#{r_b_num} order by r_step
+</select>
+
+<select id="count" parameterType="integer" resultType="integer">
+	select count(*) from reply where r_b_num=#{r_b_num} and r_level=0
+</select>
+
+<select id="list2" parameterType="reply" resultType="reply">
+	select * from (select a.*, rownum rn from(select r.*, o.gbReply from reply r inner join (select r_origin, count(*)-1 as gbReply from reply where r_b_num=#{r_b_num} group by r_origin) o
+ on r.r_num=o.r_origin order by r_num desc) a) where rn between #{startNum} and #{endNum}
 </select>
 
 </mapper>

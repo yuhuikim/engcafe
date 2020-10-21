@@ -12,6 +12,8 @@ create table user_info (
   user_update           date default sysdate,
   user_pwd              VARCHAR2(100) not null
 );
+
+CREATE SEQUENCE AA START WITH 1 INCREMENT BY 1 MAXVALUE 300 CYCLE NOCACHE;
 --카테고리분류메뉴
 create table cate (
     c_num               NUMBER,                 --pk  key
@@ -26,6 +28,7 @@ create table cate (
     CONSTRAINT c_nm_pk PRIMARY KEY (c_num),
     CONSTRAINT c_id_fk FOREIGN KEY (c_id) REFERENCES user_info (user_id) 
 ); 
+
 --게시판
 create table board (
     b_num               NUMBER,                 --pk
@@ -42,21 +45,31 @@ create table board (
     b_ip                VARCHAR2(20) not null,
     b_notice            CHAR(1) default 'n', 
     b_del               CHAR(1) default 'n',
+    b_filename          VARCHAR2(100),
     CONSTRAINT b_num_pk PRIMARY KEY (b_num),
-    FOREIGN KEY (b_c_num) REFERENCES category (c_num),
+    FOREIGN KEY (b_c_num) REFERENCES cate (c_num),
     FOREIGN KEY (b_id) REFERENCES user_info (user_id)
-); 
+);
+alter table board add (b_filename varchar2(100)); 
 --업로드 파일
 create table file_upload (
     f_num               NUMBER,                 --pk
     f_b_num             NUMBER not null,        --fk
-    f_id                VARCHAR2(100) not null, --fk
     f_filename          VARCHAR2(50) not null,
     f_del               CHAR(1) default 'n',
     CONSTRAINT f_num_pk PRIMARY KEY (f_num),
-    FOREIGN KEY (f_b_num) REFERENCES board (b_num),
-    FOREIGN KEY (f_id) REFERENCES user_info (user_id)
+    FOREIGN KEY (f_b_num) REFERENCES board (b_num)
 );
+
+
+create sequence file_upload_seq;
+
+create or replace function get_seq
+    return number
+is
+begin
+    return file_upload_seq.nextval;
+end;
 -- 로그인 ip 기록
 CREATE table login_ip_history (
     i_num               NUMBER,                  --pk
@@ -66,6 +79,9 @@ CREATE table login_ip_history (
     CONSTRAINT i_num_pk PRIMARY KEY (i_num),
     FOREIGN KEY (i_id) REFERENCES user_info (user_id) 
 );
+CREATE SEQUENCE seq_loginip
+START WITH 1
+INCREMENT BY 1;
 -- 쪽지
 CREATE table message (
     m_num               NUMBER,                 --pk
@@ -84,11 +100,11 @@ CREATE table message (
     FOREIGN KEY (m_receiver_id) REFERENCES user_info (user_id) 
 );
 
-
 CREATE table reply (
     r_num               NUMBER,                 --pk
     r_b_num             NUMBER not null,        --fk
     r_ref               NUMBER not null,
+	r_origin			NUMBER not null,
     r_level             NUMBER not null,
     r_step              NUMBER not null,    
     r_id                varchar2(10) not null,  --fk
@@ -99,12 +115,13 @@ CREATE table reply (
     r_ip                VARCHAR2(20) not null,
     r_del               CHAR(1) default 'n',
     CONSTRAINT r_num_pk PRIMARY KEY (r_num)
-);    
+);     
 
 CREATE table reply (
     r_num               NUMBER,                 --pk
     r_b_num             NUMBER not null,        --fk
     r_ref               NUMBER not null,
+	r_origin			NUMBER not null,
     r_level             NUMBER not null,
     r_step              NUMBER not null,    
     r_id                varchar2(10) not null,  --fk

@@ -9,6 +9,7 @@ public class Reply {
     private int r_num;               //NUMBER,                 --pk
     private int r_b_num;             //NUMBER not null,        --fk
     private int r_ref;				 //NUMBER not null,
+    private int r_origin;			//NUMBER not null,
     private int r_level;             //NUMBER not null,
     private int r_step;              //NUMBER not null,    
     private String r_id;             //varchar2(10) not null,  --fk
@@ -21,5 +22,12 @@ public class Reply {
     //CONSTRAINT r_num_pk PRIMARY KEY (r_num),
     //FOREIGN KEY (r_b_num) REFERENCES board (b_num), 
     //FOREIGN KEY (r_id) REFERENCES user_info (user_id) 
+    
+    //게스트북 댓글용
+    private int gbReply;
+    
+    //게스트북 페이징용
+    private int startNum;
+    private int endNum;
 
 }

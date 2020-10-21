@@ -137,6 +137,7 @@ $(function(){
 	
 	<u:categoriestag />
 	<a href="replyList.html?r_b_num=100">시험용</a><br />
+	<a href="guestBookView.html?r_b_num=100">시험용2</a><br />
 	</div>
 	</section>
 </div>

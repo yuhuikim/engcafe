@@ -24,6 +24,11 @@ public class ReplyDaoImpl implements ReplyDao{
 	}
 
 	@Override
+	public int selectOrigin(int r_ref) {
+		return sst.selectOne("replyns.selectOrigin", r_ref);
+	}
+	
+	@Override
 	public int selectLevel(int r_ref) {
 		return sst.selectOne("replyns.selectLevel", r_ref);
 	}
@@ -54,8 +59,18 @@ public class ReplyDaoImpl implements ReplyDao{
 	}
 
 	@Override
+	public List<Reply> list2(Reply reply) {
+		return sst.selectList("replyns.list2", reply);
+	}
+	
+	@Override
 	public int selectMaxStep(int r_b_num) {
 		return sst.selectOne("replyns.selectMaxStep", r_b_num);
+	}
+
+	@Override
+	public int count(int r_b_num) {
+		return sst.selectOne("replyns.count", r_b_num);
 	}
 
 }

@@ -20,7 +20,7 @@
 			<a href="" class="btn btn-xs btn-default">로그인</a>
 		</p>
 	</div>
-	<img src="${path }/resources/images/yanado.jpg" alt="" />
+	<img src="${path }/resources/images/main.png" alt="" />
 	<div class="container" align="left" style="width:1080px;height:45;margin-top:11px;padding-top:11px;border:1px solid #ededed;font-size:13">
 		<a href="" style="color:black;padding-left:5px;padding-right:10px">[영꿀]추천 미드/영화</a>·
 		<a href="" style="color:black;padding-left:5px;padding-right:10px">[꿀팁]미드/영화</a>·

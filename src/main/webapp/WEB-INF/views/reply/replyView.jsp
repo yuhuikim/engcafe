@@ -73,7 +73,7 @@
 <body>
 <div id="replyWhole" class="container" align="center" style="margin-left:200px;width:900px;padding-top:30px;padding-bottom:20px;">
 
-	<div id="repListDisp" class="container" align="left">
+	<div id="repListDisp" class="container" align="left" style="width:900px;">
 			<p align="left" style="margin-top:24px;margin-left:10px;font-size:20px;font-weight:bolder">댓글 
 				<a href="" style="margin-left:10px;font-size:15px;color:#333333;font-weight:bolder">등록순</a> 
 				<a href="" style="margin-left:10px;font-size:14px;color:#bdbdbd;font-weight:bolder">최신순</a>
@@ -124,14 +124,13 @@
 									</div>
 								
 								</p>
-								<p id="rCont_${rl.r_num }" style="font-size:14px;margin-top:1px;">${rl.r_content }</p>
-								<p style="float:left;font-size:11px;color:#979797;line-height:0%;">${rl.r_update }&nbsp&nbsp
+								<textarea id="rCont_${rl.r_num }" style="border:none;outline:none;resize:none;font-size:14px;margin-top:1px;margin-bottom:0px;height:100%;" cols="${100-rl.r_level*8}" readonly="readonly">${rl.r_content }</textarea><br />
+								<p style="float:left;font-size:11px;color:#979797;margin-bottom:2px;">${rl.r_update }&nbsp&nbsp
 								<c:if test="${rl.r_level<10}">
-									<p id="rKey_${rl.r_num }" style="float:left;font-size:10px;color:#979797;cursor:pointer;line-height:0%;" onclick="replKey(${rl.r_num},${rl.r_level})">답글쓰기</p>
+									<p id="rKey_${rl.r_num }" style="float:left;font-size:10px;color:#979797;cursor:pointer;margin-bottom:0px;" onclick="replKey(${rl.r_num},${rl.r_level})">답글쓰기</p>
 								</c:if>
-								<c:if test="${rl.r_level>=10}">
-								
-									<p id="rKey_${rl.r_num }" style="float:left;font-size:5px;color:#979797;line-height:0%;">더 댓글을 달 수 없는 댓글입니다.</p>
+								<c:if test="${rl.r_level>=10}">							
+									<p id="rKey_${rl.r_num }" style="float:left;font-size:5px;color:#979797;margin-bottom:0px;">더 댓글을 달 수 없는 댓글입니다.</p>
 								</c:if>
 								</p>
 							</td>
