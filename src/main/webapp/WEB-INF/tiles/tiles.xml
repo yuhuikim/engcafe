@@ -15,7 +15,7 @@
 			value="/WEB-INF/views/main/footer.jsp" />
 	</definition>
 	<definition name="main" extends="tilesbase">
-		<put-attribute name="title" value="첫 화면 입니다" />
+		<put-attribute name="title" value=":: 꿀카페 :: 메인페이지" />
 		<put-attribute name="body"
 			value="/WEB-INF/views/main/mainBody.jsp" />
 	</definition>

@@ -171,7 +171,7 @@
 		    </div>
 		    <div class="layer_alarm" style="display: none;" data-identifier="alarm-switch-notice">
 		        <div class="layer_inner">
-		          	<p class="layer_txt">이 게시판의 글을 새글피드에서 볼 수 있습니다.</p>  
+		          	<p class="layer_txt">이 게시판의 글을 새 글 피드에서 볼 수 있습니다.</p>  
 		        </div>
 		        <button type="button" class="btn_close _click(ArticleAlarmConfig|ClosePopup)"><span class="blind">닫기</span></button>
 		    </div>
