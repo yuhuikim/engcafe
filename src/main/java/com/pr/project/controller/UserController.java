@@ -53,7 +53,6 @@ public class UserController {
 	public String nickChk( String user_nickname, Model model,HttpSession session)  throws IOException{ // user_nickname가지고 데이터베이스 이동하기
 		String msg1 = "";
 		String textColor2 = "";
-		//System.out.println(session.getAttribute("textColor2"));
 		User user = us.select1(user_nickname);
 		if (user == null) {
 			
