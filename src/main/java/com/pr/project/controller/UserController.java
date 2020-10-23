@@ -44,7 +44,7 @@ public class UserController {
 			msg = user_id + "는 사용 가능한 ID 입니다.";
 		else
 			msg = user_id + "는 사용 중인 ID 입니다.";
-		// model.addAttribute("message", msg);
+
 		return msg;
 	}
 
