@@ -25,7 +25,13 @@ public class UserController {
 	private LoginIpService ls;
 
 	@RequestMapping("user/joinForm")
-	public String joinForm() {
+	public String joinForm(HttpSession session,Model model) {
+		System.out.println(session.getAttribute("textColor2"));
+		
+		
+		String textColor2 = (String) session.getAttribute("textColor2");
+		model.addAttribute("textColor2", textColor2);
+		
 		return "user/joinForm";
 	}
 
@@ -35,23 +41,41 @@ public class UserController {
 		String msg = "";
 		User user = us.select(user_id);
 		if (user == null)
-			msg = "사용 가능한 ID 입니다.";
+			msg = user_id + "는 사용 가능한 ID 입니다.";
 		else
-			msg = "사용 중인 ID 입니다.";
+			msg = user_id + "는 사용 중인 ID 입니다.";
 		// model.addAttribute("message", msg);
 		return msg;
 	}
 
 	@RequestMapping(value = "user/nickChk", produces = "text/html;charset=utf-8")
 	@ResponseBody
-	public String nickChk(String user_nickname, Model model) { // user_nickname가지고 데이터베이스 이동하기
+	public String nickChk( String user_nickname, Model model,HttpSession session)  throws IOException{ // user_nickname가지고 데이터베이스 이동하기
 		String msg1 = "";
+		String textColor2 = "";
+		//System.out.println(session.getAttribute("textColor2"));
 		User user = us.select1(user_nickname);
-		if (user == null)
-			msg1 = "사용 가능한 닉네임 입니다.";
-		else
-			msg1 = "사용 중인 닉네임 입니다.";
-		model.addAttribute("message1", msg1);
+		if (user == null) {
+			
+			 textColor2 ="blue";
+			 session.setAttribute("textColor", "blue");
+			model.addAttribute("textColor2", textColor2);
+			msg1 = user_nickname + "는 사용 가능한 닉네임 입니다."+ session.getAttribute("textColor");    
+			System.out.println("사용가능세션 :" + session.getAttribute("textColor2"));
+
+
+		}else {
+			 textColor2 ="red";
+			 session.setAttribute("textColor", "red");
+			model.addAttribute("textColor2", textColor2);
+			msg1 = user_nickname + "는 사용 중인 닉네임 입니다." + session.getAttribute("textColor");
+			System.out.println("사용불가능세션 :" + session.getAttribute("textColor2"));
+
+
+		}
+		
+		session.setAttribute("textColor2", textColor2);
+		System.out.println(session.getAttribute("textColor2"));
 		return msg1;
 	}
 
@@ -94,7 +118,7 @@ public class UserController {
 			ls.insert_ip(loginip);
 			session.setAttribute("user_id", user.getUser_id()); // 로그인 상태 유지
 			String a = (String) session.getAttribute("user_id");
-			System.out.println("login: session user id : "+a);
+			System.out.println("login: session user id : " + a);
 		}
 		model.addAttribute("result", result);
 		return "user/login";
@@ -103,7 +127,7 @@ public class UserController {
 	@RequestMapping("user/logout")
 	public String logout(HttpSession session) {
 		String a = (String) session.getAttribute("user_id");
-		System.out.println("logout/invalidate before : session user id : "+a);
+		System.out.println("logout/invalidate before : session user id : " + a);
 		session.invalidate();
 		return "user/logout";
 	}

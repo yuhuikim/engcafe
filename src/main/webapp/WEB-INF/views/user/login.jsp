@@ -6,9 +6,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-
 <title>Insert title here</title>
 </head>
+
 <body>
 	<c:if test="${result > 0}">
 		<script type="text/javascript">

@@ -7,6 +7,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
+
 <body>
 	<c:if test="${result>0}">
 		<script type="text/javascript">
@@ -14,6 +15,7 @@
 			location.href = "loginForm.html";
 		</script>
 	</c:if>
+	
 	<c:if test="${result==0 }">
 		<script type="text/javascript">
 			alert("다시 입력하세요.");
@@ -28,6 +30,7 @@
 				history.go(-1);
 			</script>
 		</c:when>
+		
 		<c:when test="${result==-2}">
 			<script type="text/javascript">
 				alert("중복된 닉네임 입니다.");
@@ -41,6 +44,5 @@
 			</script>
 		</c:when>
 	</c:choose>
-
 </body>
 </html>
