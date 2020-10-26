@@ -26,5 +26,6 @@ public class UserServiceImpl implements UserService {
 	public int insert(User user) {
 		return ud.insert(user);
 	}
-
+	
+	
 }

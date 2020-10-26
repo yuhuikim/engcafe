@@ -38,8 +38,13 @@
 			return false;
 		}
 		$.post('idChk.html', 'user_id=' + frm.user_id.value, function(data) {
-			$('#idChk').html(data);
-			//alert(data);
+			if (data == '1') {
+				$('#idChk').css("color","blue");
+				$('#idChk').html(user_id + "는 사용 가능한 아이디입니다.");				 
+			} 	else {
+				$('#idChk').css("color","red");
+				$('#idChk').html(user_id + "는 사용 중인 아이디입니다.");				
+			}	
 		});
 	}
 	
@@ -53,11 +58,15 @@
 			frm.user_nickname.focus();
 			return false;
 		}
-		$.post('nickChk.html', 'user_nickname=' + frm.user_nickname.value,
-				function(data) {
-					$('#nickChk').html(data);
-					//alert(data);
-				});
+		$.post('nickChk.html', 'user_nickname=' + frm.user_nickname.value, function(data) {
+			if (data == '1') {
+				$('#nickChk').css("color","blue");
+				$('#nickChk').html(user_nickname + "는 사용 가능한 닉네임입니다.");				 
+			} 	else {
+				$('#nickChk').css("color","red");
+				$('#nickChk').html(user_nickname + "는 사용 중인 닉네임입니다.");				
+			}
+		});
 	}
 <!-- /////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
 
@@ -84,6 +93,8 @@
 		return true;
 	}
 </script>
+
+<!--------CSS--------->
 
 <style>
 html, body {
@@ -174,8 +185,8 @@ body {
 	}
 }
 </style>
-
 </head>
+
 
 <body class="text-center">
 
@@ -190,71 +201,33 @@ body {
 
         <!-- 아이디 -->
 		<label for="input1" class="sr-only">ID</label>
-	    
-	    <!-- 사용 가능한 ID인 경우 / 중복된 ID인 경우-->
-		<c:choose>
-			<c:when test="${not empty user_id }"> 
-				<span class="form-control" style="border: 1px solid #ced4da;">
-					<input type="text" name="user_id" style="border: 1px solid white; margin: 0px; outline: none;"
-					size="30" class="form-control" value="${user_id }"
-					placeholder="아이디" required="required" autofocus="autofocus"> &nbsp; 
-					<span> <img height="23" width="23" src="${path }/resources/images/logo/confirm_logo.png" onclick="idChk()">
-				</span>
-				</span>
-
-			</c:when>
-		
-			<c:when test="${empty user_id }">
-				<span class="form-control" style="border: 1px solid #ced4da;">
+	        <span class="form-control" style="border: 1px solid #ced4da;">
 					<input type="text" name="user_id" style="border: 1px solid white; outline: none;" size="30"
 					required="required" placeholder="아이디" autofocus="autofocus">&nbsp;
 					<span> 
 					<img height="23" width="23" src="${path }/resources/images/logo/confirm_logo.png" onclick="idChk()">
-				   </span>
-				</span>
-			</c:when>
-		</c:choose>
+				    </span>
+			</span>
+			
+			<div id="idChk" style="font-family: verdana; font-size: 15px;"></div> 
 		
-		<!-- 아이디 사용 가능 여부 문구 -->
-		<div id="idChk" class="err" style="font-family: verdana; font-size: 15px; color: red;">
-		</div>
 		<!-- 칸 사이의 간격 주기 -->
 		<div style="padding-bottom: 10px"></div>
 		 
 <!-- /////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
 
         <!-- 닉네임 -->
-		<label for="input2" class="sr-only">Nickname</label>
-		<c:choose>
-			<c:when test="${not empty user_nickname }">
-				<span class="form-control"> <input type="text"
-					name="user_nickname"
-					style="border: 1px solid white; margin: 0px; outline: none;"
-					size="30" class="form-control" value="${user_nickname }"
-					placeholder="닉네임" required="required" autofocus="autofocus">
-					&nbsp; <span> <img height="23" width="23"
-						src="${path }/resources/images/logo/confirm_logo.png"
-						onclick="nickChk()">
-				</span>
-				</span>
-			</c:when>
-
-			<c:when test="${empty user_nickname }">
-				<span class="form-control"> <input type="text"
-					name="user_nickname"
-					style="border: 1px solid white; outline: none;" size="30"
-					required="required" placeholder="닉네임" autofocus="autofocus">&nbsp;
-					<span> <img height="23" , width="23"
-						src="${path }/resources/images/logo/confirm_logo.png"
-						onclick="nickChk()">
-				</span></span>
-			</c:when>
-		</c:choose>
-
-		<!-- 닉네임 사용 가능 여부 문구 -->
-		<div id="nickChk" class="err"
-			style="font-family: verdana; font-size: 15px; color: ${textColor}"></div>
+        <label for="input2" class="sr-only">Nickname</label>
+        <span class="form-control" style="border: 1px solid #ced4da;">
+        	<input type="text" name="user_nickname" style="border: 1px solid white; outline: none;" size="30" 
+        	placeholder="닉네임" required="required" autofocus="autofocus">&nbsp; 
+			<span> 
+			<img height="23" width="23" src="${path }/resources/images/logo/confirm_logo.png" onclick="nickChk()">
+			</span>
+		</span>
 		
+		<div id="nickChk" style="font-family: verdana; font-size: 15px;"></div> 
+			
 		<!-- 칸 사이의 간격 주기 -->
 		<div style="padding-bottom: 10px"></div>
 
@@ -312,7 +285,6 @@ body {
 		
 		<!-- 가입하기 버튼  -->
 		<button class="btn btn-lg btn-primary btn-block" type="submit">가입하기</button>
-
 	</form>
 </body>
 </html>

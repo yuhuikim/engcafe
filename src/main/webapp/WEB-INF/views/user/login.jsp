@@ -26,7 +26,7 @@
 
 	<c:if test="${result == -1}">
 		<script type="text/javascript">
-			alert("존재하지 않는 아이디 입니다.");
+			alert("존재하지 않는 아이디입니다.");
 			history.go(-1);
 		</script>
 	</c:if>
