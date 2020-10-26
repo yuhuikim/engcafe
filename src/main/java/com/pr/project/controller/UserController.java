@@ -57,6 +57,7 @@ public class UserController {
 
 	@RequestMapping("user/join")
 	public String join(User user, Model model, HttpServletRequest request, HttpSession session) throws IOException {
+	
 		int result = 0;
 
 		User ui = us.select(user.getUser_id());
@@ -93,10 +94,6 @@ public class UserController {
 			loginip.setI_ip(request.getLocalAddr()); // ip setting
 			ls.insert_ip(loginip);
 			session.setAttribute("user_id", user.getUser_id()); // 로그인 상태 유지
-			/*
-			 * String a = (String) session.getAttribute("user_id");
-			 * System.out.println("login: session user id : " + a);
-			 */
 		}
 		model.addAttribute("result", result);
 		return "user/login";
@@ -104,10 +101,6 @@ public class UserController {
 
 	@RequestMapping("user/logout")
 	public String logout(HttpSession session) {
-		/*
-		 * String a = (String) session.getAttribute("user_id");
-		 * System.out.println("logout/invalidate before : session user id : " + a);
-		 */
 		session.invalidate();
 		return "user/logout";
 	}
